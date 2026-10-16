@@ -1,0 +1,10 @@
+<div class="shell">
+  <nav>
+    <span class="marca">greenCES</span>
+    <a routerLink="/home" routerLinkActive="activo">Home</a>
+    <a routerLink="/monitoreo" routerLinkActive="activo">Monitoreo</a>
+    <a routerLink="/dashboard" routerLinkActive="activo">Dashboard</a>
+    <button type="button" (click)="salir()">Cerrar sesión</button>
+  </nav>
+  <main><router-outlet /></main>
+</div>

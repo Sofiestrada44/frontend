@@ -1,0 +1,51 @@
+<h1>Monitoreo</h1>
+
+@if (error()) {
+  <p class="aviso alerta" role="alert">{{ error() }}</p>
+}
+
+@if (datos(); as d) {
+  <p class="estado" [class.on]="encendido(d)">
+    Sistema {{ encendido(d) ? 'encendido' : 'apagado' }}
+  </p>
+  @if (!encendido(d)) {
+    <p class="aviso">El ESP32 está apagado o sin enviar datos. Presiona el pulsador para encenderlo.</p>
+  }
+
+  <section class="grid">
+    <article class="panel medida">
+      <h2>Temperatura</h2>
+      <p class="valor">{{ d.temperatura.toFixed(1) }}<span>°C</span></p>
+    </article>
+    <article class="panel medida">
+      <h2>Humedad ambiente</h2>
+      <p class="valor">{{ d.humedad_ambiente.toFixed(1) }}<span>%</span></p>
+    </article>
+    <article class="panel medida">
+      <h2>Humedad del suelo</h2>
+      <p class="valor">{{ d.humedad_suelo.toFixed(1) }}<span>%</span></p>
+    </article>
+  </section>
+
+  <h2 class="sec">Actuadores</h2>
+  <section class="grid">
+    <article class="panel actuador">
+      <span class="led verde" [style.opacity]="d.led_verde_pwm > 0 ? 0.25 + d.led_verde_pwm / 133 : 0.12"></span>
+      <div><h3>LED verde</h3><p>{{ d.led_verde_pwm }} % PWM</p></div>
+    </article>
+    <article class="panel actuador">
+      <span class="led rojo" [class.apagado]="!d.led_rojo"></span>
+      <div><h3>LED rojo</h3><p>{{ d.led_rojo ? 'Encendido' : 'Apagado' }}</p></div>
+    </article>
+    <article class="panel actuador">
+      <span class="led blanco" [class.apagado]="!d.led_blanco"></span>
+      <div><h3>LED blanco</h3><p>{{ d.led_blanco ? 'Encendido' : 'Apagado' }}</p></div>
+    </article>
+    <article class="panel actuador">
+      <span class="led ventilador" [class.apagado]="!d.ventilador"></span>
+      <div><h3>Ventilador</h3><p>{{ d.ventilador ? 'Encendido' : 'Apagado' }}</p></div>
+    </article>
+  </section>
+} @else {
+  <p class="aviso">Cargando datos…</p>
+}

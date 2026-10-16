@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --fondo: #edf2ee; --panel: #ffffff; --tinta: #12241b; --suave: #5b6f63; --linea: #cbd8cf;
+  --musgo: #1b4332; --hoja: #2e7d4f; --ambar: #d08a1e; --alerta: #b6402f;
+  --display: 'Bricolage Grotesque', Georgia, serif; --cuerpo: 'Instrument Sans', system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--fondo); color: var(--tinta); font-family: var(--cuerpo); line-height: 1.5; }
+h1, h2, h3 { font-family: var(--display); margin: 0; }
+h1 { font-size: 2rem; margin-bottom: 1.25rem; }
+h2 { font-size: 1.1rem; }
+h3 { font-size: 1rem; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid var(--ambar); outline-offset: 2px; }
+.sec { margin: 2rem 0 .75rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; }
+.panel { background: var(--panel); border: 1px solid var(--linea); border-radius: 6px; padding: 1.25rem; }
+.aviso { color: var(--suave); }
+.aviso.alerta { color: var(--alerta); font-weight: 600; }
+/* Home */
+.hero { max-width: 62ch; margin-bottom: 2rem; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; }
+.lead { font-size: 1.15rem; color: var(--suave); }
+.bloques { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+.bloques p { margin: .5rem 0 0; color: var(--suave); }
+/* Monitoreo */
+.estado { display: inline-block; padding: .25rem .8rem; border-radius: 999px; background: var(--linea); font-weight: 600; margin: 0 0 1rem; }
+.estado.on { background: var(--hoja); color: #fff; }
+.valor { font-family: var(--display); font-size: 2.6rem; margin: .25rem 0 0; }
+.valor span { font-size: 1.1rem; color: var(--suave); margin-left: .25rem; }
+.actuador { display: flex; align-items: center; gap: 1rem; }
+.actuador p { margin: 0; color: var(--suave); }
+.led { width: 34px; height: 34px; border-radius: 50%; flex: none; border: 2px solid var(--linea); }
+.led.verde { background: #2fbf6a; }
+.led.rojo { background: #e0392b; }
+.led.blanco { background: #fff; box-shadow: 0 0 10px 2px #e4e4e4; }
+.led.ventilador { background: var(--hoja); }
+.led.apagado { background: #dfe6e1; box-shadow: none; }
+/* Dashboard */
+.mm { display: flex; justify-content: space-between; margin: .6rem 0 0; }
+.mm span { color: var(--suave); }
+.grafico { height: 340px; }

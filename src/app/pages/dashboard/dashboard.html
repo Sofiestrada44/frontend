@@ -1,0 +1,19 @@
+<h1>Dashboard</h1>
+
+<section class="grid">
+  @for (t of tarjetas(); track t.titulo) {
+    <article class="panel">
+      <h2>{{ t.titulo }}</h2>
+      <p class="mm"><span>Máximo</span><strong>{{ fmt(t.mm?.max) }} {{ t.unidad }}</strong></p>
+      <p class="mm"><span>Mínimo</span><strong>{{ fmt(t.mm?.min) }} {{ t.unidad }}</strong></p>
+    </article>
+  }
+</section>
+
+<h2 class="sec">Temperatura, últimos 5 minutos</h2>
+<article class="panel grafico">
+  <canvas #lienzo></canvas>
+</article>
+@if (sinDatos()) {
+  <p class="aviso">No hay lecturas en los últimos 5 minutos.</p>
+}
